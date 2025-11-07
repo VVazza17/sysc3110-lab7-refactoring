@@ -10,5 +10,13 @@ public abstract class Site {
         _rate = rate;
     }
 
-    public abstract double getBillableAmount();
+    public double getBillableAmount() {
+        double base = getBaseAmount();
+        double tax  = getTaxAmount(base);
+        return base + tax;
+    }
+
+    protected abstract double getBaseAmount();
+    protected abstract double getTaxAmount(double base);
+
 }
